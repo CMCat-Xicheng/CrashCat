@@ -1,13 +1,13 @@
 [
   {
-    "modid": "fdpclient",
-    "name": "FDPClient",
+    "modid": "crashcat",
+    "name": "CrashCat",
     "description": "Minecraft 1.8 Utility mod",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://fdpinfo.github.io",
+    "url": "https://crash.ccat.tech",
     "updateUrl": "",
-    "authorList": ["CCBlueX", "SkidderMC"],
+    "authorList": ["CMCat"],
     "credits": "",
     "logoFile": "",
     "screenshots": [],
