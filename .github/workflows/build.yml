@@ -27,5 +27,5 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: FDPClient
-          path: build/libs/FDPClient-${{ steps.vars.outputs.sha_short }}.jar
+          name: CrashCat
+          path: build/libs/CrashCat-${{ steps.vars.outputs.sha_short }}.jar
