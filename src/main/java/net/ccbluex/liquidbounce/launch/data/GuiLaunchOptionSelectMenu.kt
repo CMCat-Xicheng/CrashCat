@@ -23,7 +23,7 @@ class GuiLaunchOptionSelectMenu : GuiScreen() {
     override fun drawScreen(mouseX: Int, mouseY: Int, pTicks: Float) {
         drawDefaultBackground()
 
-        drawCenteredString(mc.fontRendererObj, "FDPClient Loading...", width / 2, height / 2 - 40, Color.WHITE.rgb)
+        drawCenteredString(mc.fontRendererObj, "CrashCat Loading...", width / 2, height / 2 - 40, Color.WHITE.rgb)
 
         super.drawScreen(mouseX, mouseY, pTicks)
     }
