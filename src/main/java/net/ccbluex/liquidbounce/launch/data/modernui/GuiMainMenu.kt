@@ -139,7 +139,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
 
         this.buttonList.add(
             TestBtn(
-                203, this.width - 155, 10, 25, 25, "Discord", ResourceLocation("fdpclient/imgs/icon/discord.png"), 2,
+                203, this.width - 155, 10, 25, 25, "QQ", ResourceLocation("fdpclient/imgs/icon/discord.png"), 2,
                 Color(20, 20, 20, 130)
             )
         )
@@ -161,20 +161,10 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
         drawed = true
     }
 
-    /* For modification, please keep "Designed by SkidderMC" */
     override fun initGui() {
         val defaultHeight = (this.height / 3.5).toInt()
         Thread {
             if (LiquidBounce.CLIENTTEXT.contains("Waiting") || LiquidBounce.CLIENTTEXT.contains("Oops")) {
-                try {
-                    LiquidBounce.CLIENTTEXT = HttpUtils.get("http://fdpinfo.github.io/changelogs")
-                } catch (e: Exception) {
-                    try {
-                        LiquidBounce.CLIENTTEXT = HttpUtils.get("http://fdpinfo.github.io/changelogs")
-                    } catch (e: Exception) {
-                        LiquidBounce.CLIENTTEXT = "Oops.. :(\$Can't get information!#Try reopen the main menu\$140\$80"
-                    }
-                }
             }
         }.start()
 
@@ -202,7 +192,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
 
 
         FontLoaders.F16.drawString(
-            "Made by SkidderMC",
+            "Made by CMCat",
             10f,
             this.height - 15f,
             Color(1, 1, 1, 170).rgb
@@ -214,7 +204,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
             Color(1, 1, 1, 170).rgb
         )
         var versionMsg =
-            "Version: " + LiquidBounce.CLIENT_VERSION + if (LiquidBounce.VERSIONTYPE.contains("Release")) " | Release" else " | " + LiquidBounce.VERSIONTYPE + " (Bleeding Edge)"
+            "Version: 1.1.220809"
         FontLoaders.F16.drawString(
             versionMsg,
             this.width - FontLoaders.F16.getStringWidth(versionMsg) - 10F,
@@ -272,8 +262,8 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
             200 -> mc.displayGuiScreen(GuiAltManager(this))
             201 -> mc.displayGuiScreen(GuiBackground(this))
             202 -> displayed = false
-            203 -> MiscUtils.showURL("https://${LiquidBounce.CLIENT_WEBSITE}/discord.html")
-            204 -> MiscUtils.showURL("https://${LiquidBounce.CLIENT_WEBSITE}")
+            203 -> MiscUtils.showURL("https://crash.ccat.tech/qq")
+            204 -> MiscUtils.showURL("https://crash.car.tech")
             205 -> LiquidBounce.Darkmode = !LiquidBounce.Darkmode
         }
     }
