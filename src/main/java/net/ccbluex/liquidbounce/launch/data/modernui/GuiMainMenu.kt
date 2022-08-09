@@ -1,8 +1,3 @@
-/*
- * FDPClient Hacked Client
- * A free open source mixin-based injection hacked client for Minecraft using Minecraft Forge by LiquidBounce.
- * https://github.com/SkidderMC/FDPClient/
- */
 package net.ccbluex.liquidbounce.launch.data.modernui
 
 import net.ccbluex.liquidbounce.LiquidBounce
@@ -65,7 +60,19 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
                 Color(20, 20, 20, 130)
             )
         )
-        
+
+        this.buttonList.add(
+            TestBtn(
+                102,
+                (this.width / 2) - (130 / 2),
+                this.height / 2 + 70,
+                130,
+                23,
+                LanguageManager.get("ui.mods"),
+                null,
+                2,
+                Color(20, 20, 20, 130)
+            )
         )
 
 
@@ -244,6 +251,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
         when (button.id) {
             100 -> mc.displayGuiScreen(GuiSelectWorld(this))
             101 -> mc.displayGuiScreen(GuiMultiplayer(this))
+            102 -> mc.displayGuiScreen(GuiModList(this))
             103 -> mc.displayGuiScreen(GuiOptions(this, mc.gameSettings))
             104 -> mc.shutdown()
             200 -> mc.displayGuiScreen(GuiAltManager(this))
