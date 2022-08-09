@@ -5,8 +5,8 @@ import net.ccbluex.liquidbounce.event.UpdateEvent
 import net.ccbluex.liquidbounce.features.module.Module
 import net.ccbluex.liquidbounce.features.module.ModuleCategory
 import net.ccbluex.liquidbounce.features.module.ModuleInfo
-import net.minecraft.client.settings
-import net.minecraft.entity.player
+import net.minecraft.client.settings.KeyBinding
+import net.minecraft.entity.player.EntityPlayer
 
 @ModuleInfo(name = "AirJump", category = ModuleCategory.MOVEMENT)
 class AirJump : Module() {
