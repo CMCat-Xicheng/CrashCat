@@ -199,7 +199,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
             Color(1, 1, 1, 170).rgb
         )
         var versionMsg =
-            "Version: 1.1.220809"
+            "Version: 1.1.220810"
         FontLoaders.F16.drawString(
             versionMsg,
             this.width - FontLoaders.F16.getStringWidth(versionMsg) - 10F,
