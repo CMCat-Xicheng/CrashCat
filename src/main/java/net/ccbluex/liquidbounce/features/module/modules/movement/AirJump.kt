@@ -12,6 +12,9 @@ import net.minecraft.entity.player.EntityPlayer
 class AirJump : Module() {
     @EventTarget
     fun onUpdate(event: UpdateEvent) {
-      if (mc.gameSettings.keyBindJump.pressed && !mc.thePlayer.onGround) mc.thePlayer.jump()
+      if (mc.thePlayer.jumping && mc.thePlayer.jumpingCooldown == 0){
+          mc.thePlayer.jump();
+          mc.thePlayer.jumpingCooldown = 10;
+      }
     }
 }
