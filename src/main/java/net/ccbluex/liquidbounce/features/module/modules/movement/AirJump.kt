@@ -9,4 +9,12 @@ import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.player.EntityPlayer
 
 @ModuleInfo(name = "AirJump", category = ModuleCategory.MOVEMENT)
-object AirJump : Module()
+class AirJump : Module() {
+    @EventTarget
+    fun onUpdate(event: UpdateEvent) {
+      if (mc.gameSettings.keyBindJump.pressed && !mc.thePlayer.onGround) {
+        mc.thePlayer.jump()
+        Thread.sleep(10)
+      }
+    }
+}
