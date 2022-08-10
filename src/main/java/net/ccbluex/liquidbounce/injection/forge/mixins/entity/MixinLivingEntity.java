@@ -41,29 +41,7 @@ public abstract class MixinLivingEntity extends MixinEntity {
     @Shadow protected abstract void jump();
 
     @Shadow protected boolean jumping;
-
-    /**
-     * Hook anti levitation module
-     */
-    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/entity/effect/StatusEffect;)Z"))
-    public boolean hookTravelStatusEffect(LivingEntity livingEntity, StatusEffect effect) {
-        if ((effect == StatusEffects.LEVITATION || effect == StatusEffects.SLOW_FALLING) &&
-                ModuleAntiLevitation.INSTANCE.getEnabled()) {
-            livingEntity.fallDistance = 0f;
-            return false;
-        }
-
-        return livingEntity.hasStatusEffect(effect);
-    }
-
-    @Inject(method = "hasStatusEffect", at = @At("HEAD"), cancellable = true)
-    private void hookAntiNausea(StatusEffect effect, CallbackInfoReturnable<Boolean> cir) {
-        if (effect == StatusEffects.NAUSEA && ModuleAntiBlind.INSTANCE.getEnabled() && ModuleAntiBlind.INSTANCE.getAntiNausea()) {
-            cir.setReturnValue(false);
-            cir.cancel();
-        }
-    }
-
+    
     @Redirect(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getJumpVelocity()F"))
     private float hookJumpEvent(LivingEntity entity) {
         // Check if entity is client user
@@ -79,12 +57,6 @@ public abstract class MixinLivingEntity extends MixinEntity {
         return getJumpVelocity();
     }
 
-    @Inject(method = "pushAwayFrom", at = @At("HEAD"), cancellable = true)
-    private void hookNoPush(CallbackInfo callbackInfo) {
-        if (ModuleNoPush.INSTANCE.getEnabled()) {
-            callbackInfo.cancel();
-        }
-    }
 
     @Inject(method = "tickMovement", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/LivingEntity;jumping:Z"))
     private void hookJump(CallbackInfo callbackInfo) {
