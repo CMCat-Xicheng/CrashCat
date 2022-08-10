@@ -8,13 +8,7 @@ import net.ccbluex.liquidbounce.features.module.ModuleInfo
 import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.player.EntityPlayer
 
-@ModuleInfo(name = "AirJump", category = ModuleCategory.MOVEMENT)
-class AirJump : Module() {
-    @EventTarget
-    fun onUpdate(event: UpdateEvent) {
-      if (mc.gameSettings.keyBindJump.pressed && !mc.thePlayer.onGround) {
+@ModuleInfo(name = "Jump", category = ModuleCategory.MOVEMENT, canEnable = false)
+class Jump : Module() {
         mc.thePlayer.jump()
-        Thread.sleep(10)
-      }
-    }
 }
