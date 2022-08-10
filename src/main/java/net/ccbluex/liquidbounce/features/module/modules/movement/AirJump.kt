@@ -8,13 +8,4 @@ import net.ccbluex.liquidbounce.features.module.ModuleInfo
 import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.player.EntityPlayer
 
-@ModuleInfo(name = "AirJump", category = ModuleCategory.MOVEMENT)
-class AirJump : Module() {
-    @EventTarget
-    fun onUpdate(event: UpdateEvent) {
-      if (mc.thePlayer.jumping && mc.thePlayer.jumpingCooldown == 0){
-          mc.thePlayer.jump();
-          mc.thePlayer.jumpingCooldown = 10;
-      }
-    }
-}
+object ModuleAirJump : Module("AirJump", Category.MOVEMENT)
