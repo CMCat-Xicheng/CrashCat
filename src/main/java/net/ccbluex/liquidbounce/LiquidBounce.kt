@@ -1,8 +1,4 @@
-/*
- * FDPClient Hacked Client
- * A free open source mixin-based injection hacked client for Minecraft using Minecraft Forge by LiquidBounce.
- * https://github.com/SkidderMC/FDPClient/
- */
+
 package net.ccbluex.liquidbounce
 
 import com.google.gson.JsonParser
@@ -39,13 +35,13 @@ import kotlin.concurrent.thread
 object LiquidBounce {
 
     // Client information
-    const val CLIENT_NAME = "FDPClient"
+    const val CLIENT_NAME = "CrashCat"
 
     var CLIENTTEXT = "Waiting..."
     var Darkmode = true
-    const val COLORED_NAME = "§7[§b!§7] §b§lFDPCLIENT §c» "
-    const val CLIENT_CREATOR = "CCBlueX & SkidderMC TEAM"
-    const val CLIENT_WEBSITE = "fdpinfo.github.io"
+    const val COLORED_NAME = "§b§l[CrashCat] §3>>"
+    const val CLIENT_CREATOR = "CMCat"
+    const val CLIENT_WEBSITE = "Crash.CCat.Tech"
     const val MINECRAFT_VERSION = "1.8.9"
     const val VERSIONTYPE = "Preview"
 
@@ -61,7 +57,7 @@ object LiquidBounce {
 
     // 自动读取客户端版本
     @JvmField
-    val CLIENT_VERSION = gitInfo["git.commit.id.abbrev"]?.let { "git-$it" } ?: "unknown"
+    val CLIENT_VERSION = "1.1.220810"
 
     @JvmField
     val CLIENT_BRANCH = (gitInfo["git.branch"] ?: "unknown").let {
@@ -193,7 +189,6 @@ object LiquidBounce {
 
         // run update checker
         if (CLIENT_VERSION != "unknown") {
-            thread(block = this::checkUpdate)
         }
         ClientUtils.logInfo("Loading Script Subscripts...")
         for (subscript in fileManager.subscriptsConfig.subscripts) {
@@ -211,22 +206,6 @@ object LiquidBounce {
     }
 
     private fun checkUpdate() {
-        try {
-            val get = HttpUtils.get("https://api.github.com/repos/SkidderMC/FDPClient/commits/${gitInfo["git.branch"]}")
-
-            val jsonObj = JsonParser()
-                .parse(get).asJsonObject
-
-            latest = jsonObj.get("sha").asString.substring(0, 7)
-
-            if (latest != gitInfo["git.commit.id.abbrev"]) {
-                ClientUtils.logInfo("New version available: $latest")
-            } else {
-                ClientUtils.logInfo("No new version available")
-            }
-        } catch (t: Throwable) {
-            ClientUtils.logError("Failed to check for updates.", t)
-        }
     }
 
     /**
@@ -266,11 +245,6 @@ object LiquidBounce {
             dynamicLaunchOptions.forEach {
                 it.stop()
             }
-        }
-        try {
-            DiscordRPC.stop()
-        } catch (e: Throwable) {
-            ClientUtils.logError("Failed to shutdown DiscordRPC.", e)
         }
     }
 }
