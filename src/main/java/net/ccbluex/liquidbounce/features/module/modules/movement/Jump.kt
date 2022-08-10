@@ -10,5 +10,5 @@ import net.minecraft.entity.player.EntityPlayer
 
 @ModuleInfo(name = "Jump", category = ModuleCategory.MOVEMENT, canEnable = false)
 class Jump : Module() {
-        mc.thePlayer.jump()
+        mc.thePlayer.jump();
 }
