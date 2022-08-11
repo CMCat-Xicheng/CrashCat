@@ -199,7 +199,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
             Color(1, 1, 1, 170).rgb
         )
         var versionMsg =
-            "Version: 1.1.220810"
+            "Version: 1.1.220811"
         FontLoaders.F16.drawString(
             versionMsg,
             this.width - FontLoaders.F16.getStringWidth(versionMsg) - 10F,
@@ -257,8 +257,8 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
             200 -> mc.displayGuiScreen(GuiAltManager(this))
             201 -> mc.displayGuiScreen(GuiBackground(this))
             202 -> displayed = false
-            203 -> MiscUtils.showURL("https://crash.ccat.tech/qq")
-            204 -> MiscUtils.showURL("https://crash.car.tech")
+            203 -> MiscUtils.showURL("https://www.ccat.tech/crashcat/qq")
+            204 -> MiscUtils.showURL("https://www.ccat.tech/crashcat")
             205 -> LiquidBounce.Darkmode = !LiquidBounce.Darkmode
         }
     }
