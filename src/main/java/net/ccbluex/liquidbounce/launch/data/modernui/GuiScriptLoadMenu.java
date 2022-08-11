@@ -216,7 +216,7 @@ public class GuiScriptLoadMenu extends GuiScreen {
         if (isClickSub) {
             try {
                 Thread.sleep(500);
-                String url = JOptionPane.showInputDialog(null, "Please input your subscribe", "FDP Script Cloud", JOptionPane.WARNING_MESSAGE);
+                String url = JOptionPane.showInputDialog(null, "Please input your subscribe", "CCat Script Cloud", JOptionPane.WARNING_MESSAGE);
                 Thread.sleep(200);
                 String name = JOptionPane.showInputDialog(null, "What name do you want to give this Subscribe (can be left blank)", "FDP Script Cloud", JOptionPane.WARNING_MESSAGE);
                 Subscriptions.addSubscribes(new ScriptSubscribe(url, name));
@@ -318,7 +318,7 @@ public class GuiScriptLoadMenu extends GuiScreen {
             RenderUtils.drawRoundedCornerRect(x + 8, y + 137, x + 112, y + 157, 3f, new Color(0, 0, 0, 26).getRGB());
 
         SmoothRenderUtils.drawRect(x, y + 41f, x + 120f, y + 41.4f, new Color(255, 255, 255, 60).getRGB());
-        CFontRenderer.DisplayFonts(FontLoaders.F40, "FDPClient", x + 10, y + 10, new Color(255, 255, 255, 255).getRGB());
+        CFontRenderer.DisplayFonts(FontLoaders.F40, "CrashCat", x + 10, y + 10, new Color(255, 255, 255, 255).getRGB());
         if (menuType == ScriptMenuType.Local) {
             SmoothRenderUtils.drawRoundRect(x + 8, y + 79, x + 112, y + 99, 3f, new Color(29, 155, 240, 255).getRGB());
             CFontRenderer.DisplayFonts(FontLoaders.C18, "Main Page", x + 12, y + 56, new Color(255, 255, 255, 255).getRGB());
@@ -388,7 +388,7 @@ public class GuiScriptLoadMenu extends GuiScreen {
             AtomicInteger i1 = new AtomicInteger();
             LiquidBounce.scriptManager.getScripts().forEach(script -> i1.addAndGet((int) script.getRegisteredModules().stream().filter(Module::getState).count()));
             CFontRenderer.DisplayFonts(FontLoaders.C16, "Enable " + i1 + " module from " + LiquidBounce.scriptManager.getScripts().size() + " scripts", x + 145, y + 115, new Color(217, 217, 217).getRGB());
-            CFontRenderer.DisplayFonts(FontLoaders.C14, "Tips: FDPClient is not responsible for script security, if you have any doubts, please consult the developer", x + 130, y + 140, new Color(161, 161, 161).getRGB());
+            CFontRenderer.DisplayFonts(FontLoaders.C14, "Tips: CrashCat is not responsible for script security, if you have any doubts, please consult the developer", x + 130, y + 140, new Color(161, 161, 161).getRGB());
 
         } else if (menuType == ScriptMenuType.Online) {
             SmoothRenderUtils.drawRoundRect(x + 8, y + 108, x + 112, y + 128, 3f, new Color(29, 155, 240, 255).getRGB());
