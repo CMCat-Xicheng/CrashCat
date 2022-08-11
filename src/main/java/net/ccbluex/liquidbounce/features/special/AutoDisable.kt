@@ -18,7 +18,7 @@ object AutoDisable : Listenable {
     fun onWorld(event: WorldEvent) {
         LiquidBounce.moduleManager.modules
             .filter { it.state && it.autoDisable == EnumAutoDisableType.RESPAWN && it.triggerType == EnumTriggerType.TOGGLE }
-            .forEach { 
+            .forEach { module ->
                 LiquidBounce.hud.addNotification(Notification(this.name, "你应该关闭 ${module.name} . (重生)", NotifyType.WARNING, 2000))
             }
     }
@@ -28,7 +28,7 @@ object AutoDisable : Listenable {
         if (event.packet is S08PacketPlayerPosLook) {
             LiquidBounce.moduleManager.modules
                 .filter { it.state && it.autoDisable == EnumAutoDisableType.FLAG && it.triggerType == EnumTriggerType.TOGGLE }
-                .forEach {
+                .forEach { module ->
                     LiquidBounce.hud.addNotification(Notification(this.name, "你应该关闭 ${module.name} . (回弹)", NotifyType.WARNING, 2000))
                 }
         }
