@@ -39,9 +39,9 @@ object LiquidBounce {
 
     var CLIENTTEXT = "Waiting..."
     var Darkmode = true
-    const val COLORED_NAME = "§b§l[CrashCat] §3>>"
-    const val CLIENT_CREATOR = "CMCat"
-    const val CLIENT_WEBSITE = "Crash.CCat.Tech"
+    const val COLORED_NAME = "§b§lCrashCat §3>> "
+    const val CLIENT_CREATOR = "CCat Team"
+    const val CLIENT_WEBSITE = "CCat.Tech"
     const val MINECRAFT_VERSION = "1.8.9"
     const val VERSIONTYPE = "Preview"
 
