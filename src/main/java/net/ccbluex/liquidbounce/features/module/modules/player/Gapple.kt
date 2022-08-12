@@ -82,7 +82,7 @@ class Gapple : Module() {
                             mc.netHandler.addToSendQueue(C03PacketPlayer(mc.thePlayer.onGround))
                         }
                         mc.netHandler.addToSendQueue(C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem))
-                        alert("Gapple eaten")
+                        alert("金苹果吃过了")
                         tryHeal = false
                         timer.reset()
                         delay = MathHelper.getRandomIntegerInRange(Random(), min.get(), max.get())
