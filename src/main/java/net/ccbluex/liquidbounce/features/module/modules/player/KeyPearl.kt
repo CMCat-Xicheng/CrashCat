@@ -29,7 +29,7 @@ class KeyPearl : Module() {
             mc.netHandler.addToSendQueue(C08PacketPlayerBlockPlacement(mc.thePlayer.heldItem))
             mc.netHandler.addToSendQueue(C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem))
         } else {
-            ClientUtils.displayChatMessage("Not Found Ender Pearl?")
+            ClientUtils.displayChatMessage("§b§lCrashCat §3>> 未找到末影珍珠.")
         }
     }
 }
