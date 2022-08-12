@@ -38,7 +38,7 @@ class Spammer : Module() {
 
     private val modeValue = ListValue("Mode", arrayOf("Single", "Insult", "OrderInsult"), "Single")
     private val endingChars = IntegerValue("EndingRandomChars",5,0,30)
-    private val messageValue = TextValue("Message", "Buy %r Minecraft %r Legit %r and %r stop %r using %r cracked %r servers %r%r")
+    private val messageValue = TextValue("Message", "CCat Best!")
         .displayable { !modeValue.contains("insult") }
     private val insultMessageValue = TextValue("InsultMessage", "[%s] %w [%s]")
         .displayable { modeValue.contains("insult") }
