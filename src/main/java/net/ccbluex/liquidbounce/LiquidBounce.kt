@@ -115,7 +115,7 @@ object LiquidBounce {
      * Execute if client will be started
      */
     fun initClient() {
-        ClientUtils.logInfo("Loading $CLIENT_NAME $CLIENT_VERSION, by $CLIENT_CREATOR")
+        ClientUtils.logInfo("Loading $CLIENT_NAME $CLIENT_VERSION, CCat Best!")
         ClientUtils.logInfo("Initialzing...");
         val startTime = System.currentTimeMillis()
         // Create file manager
