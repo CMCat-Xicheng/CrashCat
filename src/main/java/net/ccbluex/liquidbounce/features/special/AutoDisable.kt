@@ -19,7 +19,6 @@ object AutoDisable : Listenable {
         LiquidBounce.moduleManager.modules
             .filter { it.state && it.autoDisable == EnumAutoDisableType.RESPAWN && it.triggerType == EnumTriggerType.TOGGLE }
             .forEach {}
-            }
     }
 
     @EventTarget
@@ -28,7 +27,6 @@ object AutoDisable : Listenable {
             LiquidBounce.moduleManager.modules
                 .filter { it.state && it.autoDisable == EnumAutoDisableType.FLAG && it.triggerType == EnumTriggerType.TOGGLE }
                 .forEach {}
-                }
         }
     }
 
