@@ -1,8 +1,4 @@
-/*
- * FDPClient Hacked Client
- * A free open source mixin-based injection hacked client for Minecraft using Minecraft Forge by LiquidBounce.
- * https://github.com/SkidderMC/FDPClient/
- */
+
 package net.ccbluex.liquidbounce.features.command
 
 import net.ccbluex.liquidbounce.LiquidBounce
@@ -42,13 +38,13 @@ abstract class Command(val command: String, val alias: Array<String>) : Minecraf
     /**
      * Print [syntax] of command to chat
      */
-    protected fun chatSyntax(syntax: String) = ClientUtils.displayAlert("Syntax: §7${LiquidBounce.commandManager.prefix}$syntax")
+    protected fun chatSyntax(syntax: String) = ClientUtils.displayAlert("语法: §7${LiquidBounce.commandManager.prefix}$syntax")
 
     /**
      * Print [syntaxes] of command to chat
      */
     protected fun chatSyntax(syntaxes: Array<String>) {
-        ClientUtils.displayAlert("Syntax:")
+        ClientUtils.displayAlert("语法:")
 
         for (syntax in syntaxes)
             ClientUtils.displayChatMessage("§8> §7${LiquidBounce.commandManager.prefix}$command ${syntax.lowercase()}")
