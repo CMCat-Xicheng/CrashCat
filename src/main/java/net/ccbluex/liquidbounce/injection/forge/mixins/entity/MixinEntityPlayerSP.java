@@ -124,11 +124,6 @@ public abstract class MixinEntityPlayerSP extends MixinAbstractClientPlayer {
     @Shadow
     protected abstract boolean isCurrentViewEntity();
 
-    /**
-     * @author CCBlueX, liulihaocai
-     *
-     * use inject to make sure this works with ViaForge mod
-     */
     @Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
     public void onUpdateWalkingPlayer(CallbackInfo ci) {
         try {
@@ -175,8 +170,7 @@ public abstract class MixinEntityPlayerSP extends MixinAbstractClientPlayer {
                 
                 final Fly fly = LiquidBounce.moduleManager.getModule(Fly.class);
                 final Criticals criticals = LiquidBounce.moduleManager.getModule(Criticals.class);
-                final AntiDesync antiDesync = LiquidBounce.moduleManager.getModule(AntiDesync.class);
-                boolean moved = xDiff * xDiff + yDiff * yDiff + zDiff * zDiff > 9.0E-4D || this.positionUpdateTicks >= 20 || (fly.getState() && fly.getAntiDesync()) || (criticals.getState() && criticals.getAntiDesync()) || (antiDesync.getState() && xDiff * xDiff + yDiff * yDiff + zDiff * zDiff > 0.0D);
+                boolean moved = xDiff * xDiff + yDiff * yDiff + zDiff * zDiff > 9.0E-4D || this.positionUpdateTicks >= 20 || (fly.getState() && fly.getAntiDesync()) || (criticals.getState() && criticals.getAntiDesync());
                 boolean rotated = yawDiff != 0.0D || pitchDiff != 0.0D;
 
                 if (this.ridingEntity == null) {
