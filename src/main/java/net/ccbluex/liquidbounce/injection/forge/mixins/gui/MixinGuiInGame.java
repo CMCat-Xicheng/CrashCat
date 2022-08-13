@@ -1,8 +1,4 @@
-/*
- * FDPClient Hacked Client
- * A free open source mixin-based injection hacked client for Minecraft using Minecraft Forge by LiquidBounce.
- * https://github.com/SkidderMC/FDPClient/
- */
+
 package net.ccbluex.liquidbounce.injection.forge.mixins.gui;
 
 import net.ccbluex.liquidbounce.LiquidBounce;
@@ -10,7 +6,6 @@ import net.ccbluex.liquidbounce.event.Render2DEvent;
 import net.ccbluex.liquidbounce.features.module.modules.client.Animations;
 import net.ccbluex.liquidbounce.features.module.modules.client.HUD;
 import net.ccbluex.liquidbounce.features.module.modules.render.AntiBlind;
-import net.ccbluex.liquidbounce.features.module.modules.render.Crosshair;
 import net.ccbluex.liquidbounce.injection.access.StaticStorage;
 import net.ccbluex.liquidbounce.utils.render.ColorUtils;
 import net.ccbluex.liquidbounce.utils.render.RenderUtils;
@@ -129,12 +124,5 @@ public abstract class MixinGuiInGame extends MixinGui {
         final AntiBlind antiBlind = (AntiBlind) LiquidBounce.moduleManager.getModule(AntiBlind.class);
         if (antiBlind.getState() && antiBlind.getBossHealth().get())
             callbackInfo.cancel();
-    }
-
-    @Inject(method = "showCrosshair", at = @At("HEAD"), cancellable = true)
-    private void injectCrosshair(CallbackInfoReturnable<Boolean> cir) {
-        final Crosshair crossHair = LiquidBounce.moduleManager.getModule(Crosshair.class);
-        if (crossHair.getState())
-            cir.setReturnValue(false);
     }
  }
