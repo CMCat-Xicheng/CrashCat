@@ -1,14 +1,9 @@
-/*
- * FDPClient Hacked Client
- * A free open source mixin-based injection hacked client for Minecraft using Minecraft Forge by LiquidBounce.
- * https://github.com/SkidderMC/FDPClient/
- */
+
 package net.ccbluex.liquidbounce.injection.forge.mixins.network;
 
 import io.netty.buffer.Unpooled;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.event.PacketEvent;
-import net.ccbluex.liquidbounce.features.module.modules.exploit.PackSpoofer;
 import net.ccbluex.liquidbounce.features.module.modules.misc.SilentDisconnect;
 import net.ccbluex.liquidbounce.features.special.AntiForge;
 import net.ccbluex.liquidbounce.utils.ClientUtils;
@@ -65,51 +60,6 @@ public abstract class MixinNetHandlerPlayClient {
     @Shadow
     public abstract void handleEntityVelocity(S12PacketEntityVelocity packetIn);
 
-    @Inject(method = "handleResourcePack", at = @At("HEAD"), cancellable = true)
-    private void handleResourcePack(final S48PacketResourcePackSend p_handleResourcePack_1_, final CallbackInfo callbackInfo) {
-        final String url = p_handleResourcePack_1_.getURL();
-        final String hash = p_handleResourcePack_1_.getHash();
-
-        final PackSpoofer ps = (PackSpoofer) LiquidBounce.moduleManager.getModule(PackSpoofer.class);
-
-        try {
-            final String scheme = new URI(url).getScheme();
-            final boolean isLevelProtocol = "level".equals(scheme);
-
-            if(!"http".equals(scheme) && !"https".equals(scheme) && !isLevelProtocol)
-                throw new URISyntaxException(url, "Wrong protocol");
-
-            if(isLevelProtocol && (url.contains("..") || !url.endsWith(".zip"))) {
-                String s2 = url.substring("level://".length());
-                File file1 = new File(this.gameController.mcDataDir, "saves");
-                File file2 = new File(file1, s2);
-
-                if (file2.isFile() && !url.toLowerCase().contains("fdpclient")) {
-                    netManager.sendPacket(new C19PacketResourcePackStatus(hash, C19PacketResourcePackStatus.Action.ACCEPTED)); // perform like vanilla
-                    netManager.sendPacket(new C19PacketResourcePackStatus(hash, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
-                } else {
-                    netManager.sendPacket(new C19PacketResourcePackStatus(hash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
-                }
-
-                if (ps.getState() && ps.getNotifyValue().get()) {
-                    alert("§7[§b!§7] §b§lFDPCLIENT §c» §6Resourcepack exploit detected.");
-                    alert("§7[§b!§7] §b§lFDPCLIENT §c» §7Exploit target directory: §r" + url);
-
-                    throw new IllegalStateException("Invalid levelstorage resourcepack path");
-                } else {
-                    callbackInfo.cancel(); // despite not having it enabled we still prevents anything from illegally checking files in your computer.
-                }
-
-            }
-        } catch (final URISyntaxException e) {
-            alert("Failed to handle resource pack");
-            netManager.sendPacket(new C19PacketResourcePackStatus(hash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
-            callbackInfo.cancel();
-        } catch (final IllegalStateException e) {
-            alert("Failed to handle resource pack");
-            callbackInfo.cancel();
-        }
-    }
 
     @Inject(method = "handleJoinGame", at = @At("HEAD"), cancellable = true)
     private void handleJoinGameWithAntiForge(S01PacketJoinGame packetIn, final CallbackInfo callbackInfo) {
