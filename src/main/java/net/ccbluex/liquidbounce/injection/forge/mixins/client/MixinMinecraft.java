@@ -252,18 +252,6 @@ public abstract class MixinMinecraft {
     }
 
 
-    @Inject(method = "setWindowIcon", at = @At("HEAD"), cancellable = true)
-    private void setWindowIcon(CallbackInfo callbackInfo) throws IOException {
-        if (Util.getOSType() != Util.EnumOS.OSX) {
-            BufferedImage image = ImageIO.read(this.getClass().getResourceAsStream("/assets/minecraft/fdpclient/misc/icon.png"));
-            if (image.getWidth() != 32 || image.getHeight() != 32) {
-                image = ImageUtils.resizeImage(image, 32, 32);
-            }
-            Display.setIcon(new ByteBuffer[]{ImageUtils.readImageToBuffer(ImageUtils.resizeImage(image, 16, 16)),
-                    ImageUtils.readImageToBuffer(image)});
-            callbackInfo.cancel();
-        }
-    }
 
     @Redirect(method = "loadWorld(Lnet/minecraft/client/multiplayer/WorldClient;Ljava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/LoadingScreenRenderer;resetProgressAndMessage(Ljava/lang/String;)V"))
     public void loadWorld(LoadingScreenRenderer loadingScreenRenderer, String string) {
